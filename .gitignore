@@ -1,0 +1,21 @@
+# ignore all .class files
+*.class
+
+# ignore bin directory
+bin/
+lib/
+built/
+
+# ignore files ending in ~
+*~
+
+# ignore metada files
+.metadata
+
+# ignore project files
+.settings
+
+*.jar
+
+resources/
+*.properties
