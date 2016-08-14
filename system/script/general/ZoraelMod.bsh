@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 import ircmodbot.Module;
 import ircmodbot.OpHelp;
 
-public class ZoraelModClass extends Module
+public class ZoraelMod extends Module
 {
    Document doc;
    final String YES_MSG = "is the innovator of this work.";
@@ -18,7 +18,7 @@ public class ZoraelModClass extends Module
    final int DEF_TRIES = 25;
    final int DEF_DEEP_TRIES = 100;
 
-   public ZoraelModClass()
+   public ZoraelMod()
    {
       super("ZOR");
       this.moduleName = "Zo Zo Mod";
@@ -124,5 +124,3 @@ public class ZoraelModClass extends Module
       return startLink + link;
    }
 }
-
-ZoraelModClass ZoraelMod = new ZoraelModClass();

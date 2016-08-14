@@ -3,15 +3,15 @@ import java.util.ArrayList;
 import bank.TransactionException;
 import ircmodbot.Module;
 
-public class FishModClass extends Module
+public class FishMod extends Module
 {
-	private BankModClass bMod;
+	private BankMod bMod;
 	private String fisherName = "Botato";
 	private String currencyType = "FUSH";
 	// Currency = 0.5 * ibs
 	private double fishRate = 0.5;
 	
-	public FishModClass(BankModClass bMod)
+	public FishMod(BankMod bMod)
 	{
 		super("FishMod","");
 		this.bMod = bMod;
@@ -74,6 +74,3 @@ public class FishModClass extends Module
 		makeFishTransaction(user, dValue);
 	}
 }
-
-// Requires BankModClass to be loaded first.
-FishModClass FishMod = new FishModClass(BankMod);

@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 import ircmodbot.*;
-import bsh.Interpreter;
 
 public class Main {
-	
-	
+
 	private ModBot modBot;
-	public final Interpreter mainInterpreter;
-	public ScriptLoader loader;
+	public GeneralSLoader loader;
+	
+	// Variable to decide if main loop should exit.
+	private boolean exit = false;
 	
 	Main()
 	{
-		mainInterpreter = new Interpreter();
+		// Nothing here...
 	}
 	
 	public boolean run()
@@ -24,24 +24,36 @@ public class Main {
 				+ "Using basic properties.");
 		}
 		modBot = new ModBot();
-		loader = new ScriptLoader(modBot);
+		loader = new GeneralSLoader("system/script", modBot);
 		
-		boolean exit = false;
 		String input = "";
 		Scanner reader = new Scanner(System.in);
 		while(!exit)
 		{
 			System.out.print("> ");
 			input = reader.nextLine();
-			if(input.equalsIgnoreCase("exit"))
-				exit = true;
-			else if(input.equalsIgnoreCase("reload"))
-				loader.reload();
+			// No admin command given, output to chat.
+			if(!parseAdminInput(input))
+			{
+				modBot.sendMessage(modBot.getChannelName(), input);
+			}
 		}
 		reader.close();
 		return true;
 	}
 
+	private boolean parseAdminInput(String input)
+	{
+		if(input.equalsIgnoreCase("/exit"))
+			exit = true;
+		else if(input.equalsIgnoreCase("/reload"))
+			loader.reload();
+		else
+			return false;
+
+		return true;
+	}
+	
 	public static void main(String[] args)
 	{
 		Main main = new Main();
