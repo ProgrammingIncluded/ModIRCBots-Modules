@@ -23,20 +23,25 @@ public class InfoMod extends Module
    public void onMessage(String channel, String sender,
       String login, String hostname, String message, ArrayList cmd)
    {
-      if(OpHelp.command(message, "truepurpose").length() != 0)
-      {
-         bot.sendNotice(channel, "Created so that senpai can notice me.");
+	  if(cmd.size() >= 2)
+	  {
+	  
+        if(cmd.get(1).equalsIgnoreCase("truepurpose"))
+        {
+           bot.sendMessage(channel, "Created so that senpai can notice me.");
+        }
+        else if(cmd.get(1).equalsIgnoreCase("about"))
+        {
+           bot.sendNotice(sender, "Created for different IRC functions"
+              + " such as currency support"
+              + "A powerful back system for wide range of functions. "
+              + "Currently in Alpha.");
+        }
       }
-      else if(OpHelp.command(message, "about").length() != 0)
-      {
-         bot.sendNotice(channel, "Created for different IRC functions"
-            + " such as leaving messages when people are offline. "
-            + "A powerful back system for wide range of functions. "
-            + "Currently in Alpha.");
-      }
-      else
+	  else
       {
          bot.sendNotice(sender, getDisplayModules());
+		 bot.sendNotice(sender, "Type 'SKKI about' to learn more about the bot.");
       }
    }
 
