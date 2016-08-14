@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import ircmodbot.*;
+import ircmodbot.module.PokeInfoMod;
 
 public class Main {
 
@@ -25,6 +26,9 @@ public class Main {
 		}
 		modBot = new ModBot();
 		loader = new GeneralSLoader("system/script", modBot);
+		
+		// Add Poke testing
+		modBot.addModule(new PokeInfoMod());
 		
 		String input = "";
 		Scanner reader = new Scanner(System.in);
