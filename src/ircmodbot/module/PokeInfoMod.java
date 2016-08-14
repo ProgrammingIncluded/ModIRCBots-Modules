@@ -88,10 +88,16 @@ public class PokeInfoMod extends Module
     return ;
   }
 
+  /**
+   * Sends notice to chat. Formats for irc display.
+   */
   static public void sendNoticePokeInfo(ModBot bot, String sender, PokeInfo info)
   {
     String result = "ID: " + info.getID() + " Name: " + info.getName();
     Stat stat = info.getBaseStat();
+    bot.sendNotice(sender, result);
+
+    result = "Type(s): " + info.getTypes().toString();
     bot.sendNotice(sender, result);
 
     result = "Health: " + stat.getHP();
